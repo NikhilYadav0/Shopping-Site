@@ -6,6 +6,19 @@ const db=new sequelize('amazon','developer','devPass',{
         min:0,max:5
     }
 })
+const Comments=db.define('comments',{
+    username:{
+        type:sequelize.STRING,
+        allowNull:false
+    },
+    product_id:{
+        type:sequelize.INTEGER,
+    },
+    comment:{
+        type:sequelize.STRING,
+        allowNull:false
+    }
+})
 const Users = db.define('users',{
     username:{
         type:sequelize.STRING,

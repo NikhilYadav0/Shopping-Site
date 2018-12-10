@@ -14,13 +14,51 @@
 </head>
 <body>
         <br>
-        <input type="text" id="pname" placeholder="product name">
-        <br>
-        <input type="text" id="pdescrip" placeholder="product description">
-        <br>
-        <input type="text" id="price" placeholder="product price">
-        <br>
-        <!-- <input type="file" id="pphoto" accept=".png, .jpg, .jpeg"> -->
-        <button id="addProductBtn"> SEND </button>
+        <div class="mx-auto" style="width: max-content;"><h1><u>Add Product to Store</u></h1></div>
+        <form action="/product" method="post" enctype="multipart/form-data">
+            <br><br><br>
+            <div class="input-group input-group-sm mb-3 m-3">
+                            <!-- ------------------------------------------------- -->
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Product Name :</span>
+                    </div>
+                    <input type="text" id="pname" name="product_name" 
+                        class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                            <!-- ------------------------------------------ -->
+                            <br>
+                            <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend ">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Product Description :</span>
+                    </div>
+                    <input type="text" id="pdescrip" name="description"
+                        class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                            <!-- ------------------------------------------ -->
+                            <br>
+                            <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend ">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Product Price :</span>
+                    </div>
+                    <input type="text"id="price" name="price"
+                              class="form-control" aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                                  <!-- ------------------------------------------ -->
+                    <br>
+                    <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Product Photo :  </span>
+                          </div>
+                          <input type="file" id="pphoto" accept=".png" name="product_photo"
+                              class="form-control" aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-sm">
+                                  </div>
+                                  <br>
+                    <input type="submit" class="m-3">
+            </div>
+        </form>
 </body>
 </html>

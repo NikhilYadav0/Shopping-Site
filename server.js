@@ -1,11 +1,57 @@
 const express=require('express')
 const app= express()
+const session=require('express-session')
+const passport=require('./passport')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+app.use(session({
+    secret: 'somesecretstring'
+}))
+
+app.use(passport.initialize())
+app.use(passport.session());
+
+
+app.get('/new_prod',(req,res)=>{
+    if(!(req.user)){
+        res.redirect('/')
+    }
+    else{
+        res.redirect('/new_product.html')
+    }
+})
+
+app.get('/SignUp',(req,res)=>{
+    if(!(req.user)){
+        res.redirect('/')
+    }
+    else{
+        res.redirect('/SignUp.html')
+    }
+})
+
 app.use('/',express.static('./public'))
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
 app.use('/',require('./routes/index'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------- ERROR SCREEN  --------------------------------------- //
 app.use('/',(req,res)=>{
     res.send( `<head>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>

@@ -9,6 +9,13 @@ const upload = multer({
     dest: "../uploaded"
   });
 
+route.get('/:id',(req,res)=>{
+    Product.findOne({ where: {product_id: req.params.id}}).then((product)=>{
+        res.send(product)
+    }).catch((err)=>{
+        res.send(err)
+    })
+})
 route.get('/',(req,res)=>{
     Product.findAll().then((products)=>{
         res.send(products)
@@ -17,41 +24,26 @@ route.get('/',(req,res)=>{
     })
 })
 
-
 route.post(
     "/",
     upload.single("product_photo" /* name attribute of <file> element in your form */),
     (req, res) => {
-      console.log(req.body)
+      console.log("********************"+req.user.username+"***************")
       const tempPath = req.file.path;
-      const targetPath = path.join(__dirname, "../public/uploads/"+req.body.product+".png");
-        fs.rename(tempPath, targetPath, err => {
-          if (err) return handleError(err, res);
-          Product.create({
+      Product.create({
+            username:req.user.username,
             description:req.body.description,
             price:parseFloat(req.body.price),
             product_name:req.body.product_name
-        }).then((product)=>{
-            res.status(200).send(product)
-        }).catch((err)=>res.status(200).send(console.log(err)))
-        });
-    }
-  )
-
-
-// route.post('/',(req,res)=>{
-//     Product.create({
-//         description:req.body.description,
-//         price:parseFloat(req.body.price),
-//         product_name:req.body.name
-//     }).then((product)=>{
-//         res.status(200).send(product)
-//     }).catch((err)=>res.status(200).send(console.log(err)))
-    
-// },)
-
-
-
-
-
-module.exports=route
+        })
+        .then((product)=>{
+            const targetPath = path.join(__dirname, "../public/uploads/"+product.product_id+".png");
+            fs.rename(tempPath, targetPath, err => {
+                if (err) throw err;
+                console.log('Rename complete!');
+            })
+            res.status(200).redirect('/')
+        })
+        .catch((err)=>res.status(200).send(console.log(err)))
+    })
+    module.exports=route

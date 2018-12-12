@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+        <br>
+        <div class="mx-auto" style="width: max-content;"><h1><u>Create New Account</u></h1></div>
+        <form action="/signup" method="post" enctype="multipart/form-data">
+            <br><br><br>
+            <div class="input-group input-group-sm mb-3 m-3">
+                            <!-- ------------------------------------------------- -->
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Username :</span>
+                    </div>
+                    <input type="text" id="username" name="username"
+                        class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                            <!-- ------------------------------------------ -->
+                            <br>
+                            <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend ">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Password :</span>
+                    </div>
+                    <input type="text" id="password" name="password"
+                        class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                            <!-- ------------------------------------------ -->
+                            <br>
+                            <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend ">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">First Name :</span>
+                    </div>
+                    <input type="text"id="firstname" name="firstname"
+                              class="form-control" aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                                  <!-- ------------------------------------------ -->
+                    <br>
+                    <div class="input-group input-group-sm mb-3 m-3">
+                        <div class="input-group-prepend ">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Last Name :</span>
+                        </div>
+                        <input type="text"id="lastname" name="lastname"
+                                  class="form-control" aria-label="Sizing example input" 
+                                      aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                      <!-- ------------------------------------------ -->
+                        <br>
+                        <div class="input-group input-group-sm mb-3 m-3">
+                            <div class="input-group-prepend ">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Email Id :</span>
+                            </div>
+                            <input type="text"id="mailId" name="mailId"
+                                      class="form-control" aria-label="Sizing example input" 
+                                          aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                          <!-- ------------------------------------------ -->
+                            <br>
+                            <div class="input-group input-group-sm mb-3 m-3">
+                                <div class="input-group-prepend ">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Phone no :</span>
+                                </div>
+                                <input type="text"id="phone" name="phone"
+                                          class="form-control" aria-label="Sizing example input" 
+                                              aria-describedby="inputGroup-sizing-sm">
+                                            </div>
+                                              <!-- ------------------------------------------ -->
+                                <br>
+                    <div class="input-group input-group-sm mb-3 m-3">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">DP :  </span>
+                          </div>
+                          <input type="file" id="dp" accept=".png" name="dp"
+                              class="form-control" aria-label="Sizing example input" 
+                                  aria-describedby="inputGroup-sizing-sm">
+                                  </div>
+                                  <br>
+                    <input type="submit" class="m-3">
+            </div>
+        </form>
+</body>
+</html>

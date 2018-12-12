@@ -8,12 +8,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <style>
+            .mycard{
+                background-image: url("./images/background.png");
+                background-repeat:no-repeat;
+                background-size: cover;                       
+            }
+            .card{
+                    border-color: black;
+            }
+    </style>
+    <script>
+            var id = location.search.split('=')[1]; //     this will give product_id
+            console.log('/product/'+id)
+            $.get('/product/'+id,(product)=>{
+                console.log(product.description)
+            })
+            $.get('/comments/'+id,(comments)=>{
+                var commentBox=$('#allcomments')
+                for (index = 0; index < comments.length; index++) { 
+                        console.log(comments[index])
+                        commentBox.append(
+                                `
+                                <div class="card">
+                                        <div class="card-body mycard">
+                                                ${comments[index].comment}
+                                        </div>
+                                </div>
+                                `
+                        )
+                } 
+            })
+    </script>
     <title>Document</title>
 </head>
-<body>
+<body class="mycard m-3">
+        <img src="" id="product_photo">
         <div class="form-group" style="width: 500px">
                 <label for="comment"><b>Comment:<b></label>
                 <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <div id="allcomments">
         </div>
 </body>
 </html>

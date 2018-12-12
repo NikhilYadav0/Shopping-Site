@@ -1,4 +1,6 @@
 const sequelize=require('sequelize')
+// var SequelizeTokenify = require('sequelize-tokenify');
+
 const db=new sequelize('amazon','developer','devPass',{
     host:'localhost',
     dialect:'mysql',
@@ -12,7 +14,8 @@ const Comments=db.define('comments',{
         allowNull:false
     },
     product_id:{
-        type:sequelize.INTEGER,
+        type:sequelize.STRING,
+        allowNull:false
     },
     comment:{
         type:sequelize.STRING,
@@ -47,9 +50,13 @@ const Users = db.define('users',{
 })
 
 const Products=db.define('products',{
+    username:{
+        type:sequelize.STRING,
+        allowNull:false
+    },
     product_id:{
-        type:sequelize.INTEGER,
-        autoIncrement:true,
+        type:sequelize.UUID,
+        defaultValue:sequelize.UUIDV1,
         primaryKey:true
     },
     price:{
@@ -64,15 +71,14 @@ const Products=db.define('products',{
         type:sequelize.STRING,
         allowNull:false
     }
-    // ,
-    // image:{
-    //     type:sequelize.BLOB('long')
-    // }
-
 })
+// SequelizeTokenify.tokenify(Products, {
+//     field: 'product_id'
+// });
 
 db.sync().then(()=>console.log('db is synced')).catch(()=>console.log("db syncing error"))
 module.exports={
     users:Users,
-    products:Products
+    products:Products,
+    comments:Comments
 }

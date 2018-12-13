@@ -10,13 +10,18 @@ const upload = multer({
     dest: "../uploaded"
   });
 
-// route.get('/',(req,res)=>{
-//     User.findAll().then((users)=>{
-//         res.send(users)
-//     }).catch((err)=>{
-//         res.send(err)
-//     })
-// })
+route.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+route.get('/SignUp',(req,res)=>{
+    if((req.user)){
+        res.redirect('/')
+    }
+    else{
+        res.redirect('/SignUp.html')
+    }
+})
 
 route.get('/checkIfLoggedIn', (req,res)=>{
     console.log("INGET")

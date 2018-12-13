@@ -7,65 +7,14 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <style>
-      body{
-                background:black;
-            }
-      .server-action-menu {
-                background-color: transparent;
-                background-image: linear-gradient(to bottom, rgba(30, 87, 153, 0.2) 0%, rgba(125, 185, 232, 0) 100%);
-                background-repeat: repeat;
-                border-radius:10px;
-                padding: 5px;
-            }
-    </style>
-    <script>
-        $(()=>{
-          const formLogin=$('#login')
-          const formLogout=$('#logout')
-          const welcome=$('#welcome')
-          const username=$('#username')
-          const signup=$('#signup')
-          $.get('/checkIfLoggedIn',(res)=>{
-              console.log(res.loggedIn+"")
-              if(res.loggedIn){
-                  signup.hide();
-                  formLogin.hide();
-                  welcome.show();
-                  welcome.append(res.user.firstname);
-                  formLogout.show();
-              }
-              else{
-                signup.show();
-                welcome.hide();
-                formLogout.hide();
-              }
-          })
-          formLogout.click(()=>{
-                $.get('/logout',(res)=>{
-                welcome.hide();
-                formLogout.hide();
-                formLogin.show();
-                signup.show();
-            })
-          }) 
-        })
-    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <style>
-      .father {
-        position: relative;
-      }
-      .son {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-      }
-    </style>
+    <script src="itemShowHide.js"></script>
     <script src="./update_products.js"></script>
+    <link rel="stylesheet" href="custom.css">
     <title>Online Shopping Site</title>
 </head>
 <body>
+  <!-- Navigation  -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.html">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,10 +60,49 @@
                   </form>
                 </div>
         </nav>
-        
+  <!-- ----- Poster of Products --- -->
         <div class="container mx-auto" style="width: max-content;">
           <div class="row" id="item-posters"></div>
        </div>
+  <!-- -------- chat box --------- -->
+       <div class="container" id="chat-main" style="display: none;">
+            <div class="row pt-3">
+                <div class="chat-main" >
+                    <div class="col-md-12 chat-header rounded-top bg-primary text-white">
+                        <div class="row">
+                            <div class="col-md-6 username pl-2">
+                                <i class="fa fa-circle text-success" aria-hidden="true"></i>
+                                <h6 class="m-0" id="chat-with"></h6>
+                            </div>
+                            <div class="col-md-6 options text-right pr-2">
+                                <i class="fa fa-plus mr-2" aria-hidden="true"></i>
+                                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                <i class="fa fa-circle text-success live-video mr-1" aria-hidden="true"></i>
+                                <i class="fa fa-phone mr-2" aria-hidden="true"></i>
+                                <i class="fa fa-cog mr-2" aria-hidden="true"></i>
+                                <i class="fa fa-times hide-chat-box" aria-hidden="true"></i>
+                                <button style="border:0cm;" class="hide-chat-box bg-primary">_</button>
+                                <button style="border:0cm;" class="displaynone bg-primary">x</button>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="col-md-12 chats border">
+
+<!-- messages------------------------------------------------------------ -->
+                            <ul class="p-0" id="chatlist">
+                            </ul>
+<!-- messages------------------------------------------------------------ -->
+
+                        </div>
+                            <div class="col-md-12 message-box border pl-2 pr-2 border-top-0">
+                                    <textarea class="form-control mb-1" rows="1" id="chatMessage" ></textarea>
+                                <!-- <input type="text" class="pl-0 pr-0 w-100" placeholder="Type a message..."  id="chatMessage"/> -->
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
        
 </body>
 </html>

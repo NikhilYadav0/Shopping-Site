@@ -73,9 +73,25 @@ const Products=db.define('products',{
     }
 })
 
+const Chats=db.define('chats',{
+    sender_username:{
+        type:sequelize.STRING,
+        allowNull:false
+    },
+    reciever_username:{
+        type:sequelize.STRING,
+        allowNull:false
+    },
+    message:{
+        type:sequelize.STRING,
+        allowNull:false
+    }
+})
+
 db.sync().then(()=>console.log('db is synced')).catch(()=>console.log("db syncing error"))
 module.exports={
     users:Users,
     products:Products,
-    comments:Comments
+    comments:Comments,
+    chats:Chats
 }

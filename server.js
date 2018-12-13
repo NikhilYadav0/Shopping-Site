@@ -18,45 +18,22 @@ app.get('/new_prod',(req,res)=>{
     if(!(req.user)){
         res.redirect('/')
     }
-    else{
-        res.redirect('/new_product.html')
-    }
+    res.redirect('/new_product.html')
 })
+app.use('/',require('./routes/chats'))
 app.use('/delete_product',require('./routes/delete'))
-
-app.post('/comment',(req,res)=>{
-    Comment.create({
-        username:req.user.username,
-        product_id:req.body.product_id,
-        comment:req.user.firstname+" : "+req.body.message
-    }).then((comment)=>{
-        res.send("GOOD")
-    }).catch((err=>{
-        res.send("BAD")
-    }))
-})
-
-app.get('/SignUp',(req,res)=>{
-    if((req.user)){
-        res.redirect('/')
-    }
-    else{
-        res.redirect('/SignUp.html')
-    }
-})
-
+app.use('/',require('./routes/comments'))
 app.use('/',express.static('./public'))
-app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-  });
 app.use('/',require('./routes/index'))
+
 
 app.set('view engine','hbs')
 app.set('views',__dirname+"/views")
 app.use('/',(req,res)=>{
     res.render('error')
 })
+
+
 app.listen(2706,()=>{
     console.log('localhost:2706')
 })

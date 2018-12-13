@@ -72,9 +72,6 @@ const Products=db.define('products',{
         allowNull:false
     }
 })
-// SequelizeTokenify.tokenify(Products, {
-//     field: 'product_id'
-// });
 
 db.sync().then(()=>console.log('db is synced')).catch(()=>console.log("db syncing error"))
 module.exports={

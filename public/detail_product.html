@@ -18,28 +18,7 @@
                     border-color: black;
             }
     </style>
-    <script>
-            var id = location.search.split('=')[1]; //     this will give product_id
-            console.log('/product/'+id)
-            $.get('/product/'+id,(product)=>{
-                console.log(product.description)
-            })
-            $.get('/comments/'+id,(comments)=>{
-                var commentBox=$('#allcomments')
-                for (index = 0; index < comments.length; index++) { 
-                        console.log(comments[index])
-                        commentBox.append(
-                                `
-                                <div class="card">
-                                        <div class="card-body mycard">
-                                                ${comments[index].comment}
-                                        </div>
-                                </div>
-                                `
-                        )
-                } 
-            })
-    </script>
+    <script src="productDetails.js"></script>
     <title>Document</title>
 </head>
 <body class="mycard m-3">

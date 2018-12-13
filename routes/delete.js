@@ -7,6 +7,9 @@ console.log('here----===================================================++++++++
 
 route.get('/:id',(req,res)=>{
     console.log('here----===================================================++++++++++++++++++++++++++++++++')
+    if(req.user==null){
+        res.redirect('/');
+    }
     Product.findOne({where:{product_id:req.params.id}}).then((product)=>{
         if(product!=null){
             if(product.username==req.user.username){
@@ -26,6 +29,7 @@ route.get('/:id',(req,res)=>{
                 })
             }
         }
+        res.redirect('/');
     }).catch((err)=>{
         return err;
     })

@@ -37,7 +37,7 @@ app.post('/comment',(req,res)=>{
 })
 
 app.get('/SignUp',(req,res)=>{
-    if(!(req.user)){
+    if((req.user)){
         res.redirect('/')
     }
     else{
